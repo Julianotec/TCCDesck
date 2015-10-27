@@ -31,7 +31,7 @@ ENGINE = InnoDB;
 -- Table `BancoTCC`.`Adiantamento`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `BancoTCC`.`Adiantamento` (
-  `idVales` INT NOT NULL,
+  `idVales` INT NOT NULL  AUTO_INCREMENT,
   `valor` INT NOT NULL,
   `data` DATETIME NOT NULL,
   `idFuncionario` INT NOT NULL,
@@ -50,7 +50,7 @@ ENGINE = InnoDB;
 -- Table `BancoTCC`.`saques`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `BancoTCC`.`saques` (
-  `idsaques` INT NOT NULL,
+  `idsaques` INT NOT NULL  AUTO_INCREMENT,
   `valor` INT NOT NULL,
   `data` DATETIME NOT NULL,
   `idFuncionario` INT NOT NULL,
@@ -69,7 +69,7 @@ ENGINE = InnoDB;
 -- Table `BancoTCC`.`deposito`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `BancoTCC`.`deposito` (
-  `iddeposito` INT NOT NULL,
+  `iddeposito` INT NOT NULL  AUTO_INCREMENT,
   `valor` INT NOT NULL,
   `data` DATETIME NOT NULL,
   `idFuncionario` INT NOT NULL,
@@ -87,8 +87,8 @@ ENGINE = InnoDB;
 -- Table `BancoTCC`.`saldo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `BancoTCC`.`saldo` (
-  `idsaldo` INT NOT NULL,
-  `saldo` INT NOT NULL,
+  `idsaldo` INT NOT NULL  AUTO_INCREMENT,
+  `valor` INT NOT NULL,
   PRIMARY KEY (`idsaldo`))
 ENGINE = InnoDB;
 
@@ -96,4 +96,7 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+INSERT  INTO saldo (valor)VALUES  (1000)
+
 
