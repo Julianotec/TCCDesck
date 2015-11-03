@@ -31,139 +31,170 @@ public class MenuPrincipal extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btnSacar = new javax.swing.JButton();
+        btnDepositar = new javax.swing.JButton();
+        btnNovoFuncionario = new javax.swing.JButton();
+        btnFecharCaixa = new javax.swing.JButton();
+        btnAbriGaveta = new javax.swing.JButton();
+        btnSaldo = new javax.swing.JButton();
+        btnAdiantamento = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
 
-        jButton1.setText("Sacar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSacar.setBackground(new java.awt.Color(255, 255, 255));
+        btnSacar.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        btnSacar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Sacar.png"))); // NOI18N
+        btnSacar.setText("Sacar");
+        btnSacar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSacarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Depositar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnDepositar.setBackground(new java.awt.Color(255, 255, 255));
+        btnDepositar.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        btnDepositar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Depositar.png"))); // NOI18N
+        btnDepositar.setText("Depositar");
+        btnDepositar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnDepositar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnDepositarActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Novo Funcionario");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnNovoFuncionario.setBackground(new java.awt.Color(255, 255, 255));
+        btnNovoFuncionario.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        btnNovoFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/NovoFuncionario.png"))); // NOI18N
+        btnNovoFuncionario.setText("Adicionar Funcionario");
+        btnNovoFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnNovoFuncionarioActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Fechar caixa");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnFecharCaixa.setBackground(new java.awt.Color(255, 255, 255));
+        btnFecharCaixa.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        btnFecharCaixa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/FecharCaxia.png"))); // NOI18N
+        btnFecharCaixa.setText("Fechar Caixa");
+        btnFecharCaixa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnFecharCaixaActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Abrir Gaveta");
+        btnAbriGaveta.setBackground(new java.awt.Color(255, 255, 255));
+        btnAbriGaveta.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        btnAbriGaveta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Gaveta.png"))); // NOI18N
+        btnAbriGaveta.setText("Abrir Gaveta");
 
-        jButton6.setText("Saldo");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnSaldo.setBackground(new java.awt.Color(255, 255, 255));
+        btnSaldo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        btnSaldo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Saldo.png"))); // NOI18N
+        btnSaldo.setText("Saldo");
+        btnSaldo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnSaldoActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Adiantamento");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnAdiantamento.setBackground(new java.awt.Color(255, 255, 255));
+        btnAdiantamento.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        btnAdiantamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/adiantamento.png"))); // NOI18N
+        btnAdiantamento.setText("Adiantamento");
+        btnAdiantamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnAdiantamentoActionPerformed(evt);
             }
         });
 
-        jButton8.setText("Sair");
+        btnSair.setBackground(new java.awt.Color(255, 255, 255));
+        btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Sair.png"))); // NOI18N
+        btnSair.setText("Sair");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(82, 82, 82)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(66, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAbriGaveta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAdiantamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNovoFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSacar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnFecharCaixa, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
+                    .addComponent(btnDepositar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAbriGaveta, btnAdiantamento, btnDepositar, btnFecharCaixa, btnNovoFuncionario, btnSacar, btnSair, btnSaldo});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(46, 46, 46)
+                    .addComponent(btnSacar)
+                    .addComponent(btnDepositar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnFecharCaixa, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                    .addComponent(btnNovoFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addGap(43, 43, 43)
+                    .addComponent(btnAbriGaveta, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton7)
-                    .addComponent(jButton8))
-                .addGap(25, 25, 25))
+                    .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAdiantamento, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAbriGaveta, btnAdiantamento, btnDepositar, btnFecharCaixa, btnNovoFuncionario, btnSacar, btnSair, btnSaldo});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaldoActionPerformed
   JOptionPane.showMessageDialog(null, "Saldo: R$00,00");
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnSaldoActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnFecharCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCaixaActionPerformed
 FecharCaixa nomeVariavel = new FecharCaixa(null, rootPaneCheckingEnabled);
         nomeVariavel.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnFecharCaixaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-  Sacar nomeVariavel = new Sacar(null, rootPaneCheckingEnabled);
+    private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
+      SacarDepositar nomeVariavel = new SacarDepositar(null, rootPaneCheckingEnabled);
         nomeVariavel.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnDepositarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      Sacar nomeVariavel = new Sacar(null, rootPaneCheckingEnabled);
-        nomeVariavel.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnNovoFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoFuncionarioActionPerformed
 NovoFuncionario nomeVariavel = new NovoFuncionario(null, rootPaneCheckingEnabled);
         nomeVariavel.setVisible(true);
 
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnNovoFuncionarioActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnAdiantamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdiantamentoActionPerformed
 
 Adiantamento nomeVariavel = new Adiantamento(null, rootPaneCheckingEnabled);
         nomeVariavel.setVisible(true);
         
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btnAdiantamentoActionPerformed
+
+    private void btnSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacarActionPerformed
+        SacarDepositar nomeVariavel = new SacarDepositar(null, rootPaneCheckingEnabled);
+        nomeVariavel.setVisible(true);
+    }//GEN-LAST:event_btnSacarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,13 +239,13 @@ Adiantamento nomeVariavel = new Adiantamento(null, rootPaneCheckingEnabled);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton btnAbriGaveta;
+    private javax.swing.JButton btnAdiantamento;
+    private javax.swing.JButton btnDepositar;
+    private javax.swing.JButton btnFecharCaixa;
+    private javax.swing.JButton btnNovoFuncionario;
+    private javax.swing.JButton btnSacar;
+    private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnSaldo;
     // End of variables declaration//GEN-END:variables
 }
