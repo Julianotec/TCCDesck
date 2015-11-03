@@ -20,6 +20,7 @@ public class SacarDepositar extends javax.swing.JDialog {
     public SacarDepositar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);  
     }
 
     /**

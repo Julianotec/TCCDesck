@@ -18,6 +18,7 @@ public class FecharCaixa extends javax.swing.JDialog {
     public FecharCaixa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);  
     }
 
     /**

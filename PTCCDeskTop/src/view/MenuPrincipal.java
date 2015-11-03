@@ -20,6 +20,7 @@ public class MenuPrincipal extends javax.swing.JDialog {
     public MenuPrincipal(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);  
     }
 
     /**

@@ -18,6 +18,7 @@ public class Adiantamento extends javax.swing.JDialog {
     public Adiantamento(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);  
     }
 
     /**
