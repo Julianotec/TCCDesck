@@ -6,8 +6,6 @@
 
 package entity;
 
-import java.util.Date;
-import javafx.scene.chart.PieChart;
 
 /**
  *
