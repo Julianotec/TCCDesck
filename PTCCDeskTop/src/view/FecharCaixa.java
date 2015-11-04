@@ -58,6 +58,11 @@ public class FecharCaixa extends javax.swing.JDialog {
         btnGerar.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         btnGerar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Confirmar.png"))); // NOI18N
         btnGerar.setText("Gerar Relatorio");
+        btnGerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGerarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Valor Proximo Dia:");
 
@@ -138,6 +143,10 @@ public class FecharCaixa extends javax.swing.JDialog {
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
      dispose();
     }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnGerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGerarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -90,6 +90,11 @@ public class NovoFuncionario extends javax.swing.JDialog {
         btnEditar.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Editar.png"))); // NOI18N
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setBackground(new java.awt.Color(255, 255, 255));
         btnExcluir.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
@@ -283,6 +288,10 @@ public class NovoFuncionario extends javax.swing.JDialog {
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
      dispose();
     }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments
