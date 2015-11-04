@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package view;
 
+import dao.SaldoDAO;
+import entity.Saldo;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,7 +21,7 @@ public class MenuPrincipal extends javax.swing.JDialog {
     public MenuPrincipal(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setLocationRelativeTo(null);  
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -149,7 +150,7 @@ public class MenuPrincipal extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSacar)
                     .addComponent(btnDepositar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnFecharCaixa, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
                     .addComponent(btnNovoFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -157,7 +158,7 @@ public class MenuPrincipal extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAbriGaveta, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAdiantamento, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -170,21 +171,26 @@ public class MenuPrincipal extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaldoActionPerformed
-  JOptionPane.showMessageDialog(null, "Saldo: R$00,00");
+        Saldo s = new Saldo();
+        SaldoDAO dao = new SaldoDAO();
+        s = dao.getSaldoById(1);
+        double ValorSaldo; 
+        ValorSaldo = s.getValor();
+        JOptionPane.showMessageDialog(null, "Saldo: R$" + ValorSaldo);
     }//GEN-LAST:event_btnSaldoActionPerformed
 
     private void btnFecharCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCaixaActionPerformed
-FecharCaixa nomeVariavel = new FecharCaixa(null, rootPaneCheckingEnabled);
+        FecharCaixa nomeVariavel = new FecharCaixa(null, rootPaneCheckingEnabled);
         nomeVariavel.setVisible(true);
     }//GEN-LAST:event_btnFecharCaixaActionPerformed
 
     private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
-      SacarDepositar nomeVariavel = new SacarDepositar(null, rootPaneCheckingEnabled);
+        SacarDepositar nomeVariavel = new SacarDepositar(null, rootPaneCheckingEnabled);
         nomeVariavel.setVisible(true);
     }//GEN-LAST:event_btnDepositarActionPerformed
 
     private void btnNovoFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoFuncionarioActionPerformed
-NovoFuncionario nomeVariavel = new NovoFuncionario(null, rootPaneCheckingEnabled);
+        NovoFuncionario nomeVariavel = new NovoFuncionario(null, rootPaneCheckingEnabled);
         nomeVariavel.setVisible(true);
 
 
@@ -192,9 +198,9 @@ NovoFuncionario nomeVariavel = new NovoFuncionario(null, rootPaneCheckingEnabled
 
     private void btnAdiantamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdiantamentoActionPerformed
 
-Adiantamento nomeVariavel = new Adiantamento(null, rootPaneCheckingEnabled);
+        Adiantamento nomeVariavel = new Adiantamento(null, rootPaneCheckingEnabled);
         nomeVariavel.setVisible(true);
-        
+
     }//GEN-LAST:event_btnAdiantamentoActionPerformed
 
     private void btnSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacarActionPerformed
@@ -203,7 +209,7 @@ Adiantamento nomeVariavel = new Adiantamento(null, rootPaneCheckingEnabled);
     }//GEN-LAST:event_btnSacarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-          dispose();
+        dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
     /**

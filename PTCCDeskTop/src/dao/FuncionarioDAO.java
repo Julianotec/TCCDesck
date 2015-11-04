@@ -8,7 +8,6 @@ package dao;
 
 import entity.Funcionario;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,8 +26,8 @@ public class FuncionarioDAO extends MySQL {
             PreparedStatement ps
                     = c.prepareStatement("INSERT INTO Funcionario "
                             + "( nome, cpf, senha, endereço, telefone, celular,  cidade,"
-                            + " estado, adm, salario)  "
-                            + "VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ?  )");
+                            + " estado, adm, salario, vales)  "
+                            + "VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ,? )");
             ps.setString(1, funcionario.getNome());
             ps.setString(2, funcionario.getCpf());
             ps.setInt(3, funcionario.getSenha());
@@ -39,6 +38,7 @@ public class FuncionarioDAO extends MySQL {
             ps.setString(8, funcionario.getEstado());
             ps.setInt(9, funcionario.getAdm());
             ps.setDouble(10, funcionario.getSalario());
+            ps.setDouble(11, funcionario.getVales());
             
             ps.execute();
             ps.close();
@@ -61,7 +61,7 @@ public class FuncionarioDAO extends MySQL {
         try {
             PreparedStatement ps = c.prepareStatement("UPDATE funcionario "
                     + "(SET = nome = ?, cpf = ?, senha = ?, endereco = ?, telefone = ?, celular = ?, cidade = ?,"
-                    + " estado = ?, adm = ?, salario = ?)  "
+                    + " estado = ?, adm = ?, salario = ?, vales = ?)  "
                     + " WHERE idFuncionario = ?");
             ps.setString(1, funcionario.getNome());
             ps.setString(2, funcionario.getCpf());
@@ -73,6 +73,7 @@ public class FuncionarioDAO extends MySQL {
             ps.setString(9, funcionario.getEstado());
             ps.setInt(10, funcionario.getAdm());
             ps.setDouble(11, funcionario.getSalario());
+            ps.setDouble(12, funcionario.getVales());
             ps.setInt(12, funcionario.getIdFuncionario());
             ps.execute();
 

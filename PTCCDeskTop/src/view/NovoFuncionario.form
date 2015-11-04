@@ -41,23 +41,26 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnSalvar" alignment="1" min="-2" pref="98" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="btnSalvar" min="-2" pref="98" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                  </Group>
                   <Component id="cbAdm" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txtSalario" alignment="0" pref="98" max="32767" attributes="0"/>
+                      <Component id="txtSalario" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtEstado" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtCidade" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtEndereço" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtCelular" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtTelefone" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtNome" max="32767" attributes="0"/>
                       <Component id="txtCPF" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtNome" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="txtPesquisa" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">

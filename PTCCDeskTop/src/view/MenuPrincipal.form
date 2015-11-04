@@ -53,7 +53,7 @@
                   <Component id="btnSacar" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnDepositar" linkSize="2" alignment="3" min="-2" pref="87" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnFecharCaixa" linkSize="2" pref="75" max="32767" attributes="0"/>
                   <Component id="btnNovoFuncionario" linkSize="2" max="32767" attributes="0"/>
@@ -63,7 +63,7 @@
                   <Component id="btnAbriGaveta" linkSize="2" alignment="3" min="-2" pref="78" max="-2" attributes="0"/>
                   <Component id="btnSaldo" linkSize="2" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnSair" linkSize="2" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
                   <Component id="btnAdiantamento" linkSize="2" alignment="3" min="-2" pref="78" max="-2" attributes="0"/>

@@ -22,12 +22,20 @@ public class Funcionario {
     private String endereço;
     private String telefone;
     private String celular;
-    private Date DtNascimento;
     private String cidade;
     private String estado;
     private Integer adm;
     private Double salario;
     private String Email;
+    private Double vales;
+
+    public Double getVales() {
+        return vales;
+    }
+
+    public void setVales(Double vales) {
+        this.vales = vales;
+    }
 
     public String getEmail() {
         return Email;
@@ -94,14 +102,6 @@ public class Funcionario {
 
     public void setCelular(String celular) {
         this.celular = celular;
-    }
-
-    public Date getDtNascimento() {
-        return DtNascimento;
-    }
-
-    public void setDtNascimento(Date DtNascimento) {
-        this.DtNascimento = DtNascimento;
     }
 
     public String getCidade() {

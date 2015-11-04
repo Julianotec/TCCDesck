@@ -17,7 +17,7 @@ import java.sql.SQLException;
  *
  * @author ricardo jose santana
  */
-public class SaldoDAO {
+public class SaldoDAO extends MySQL{
   
     
     
@@ -78,14 +78,7 @@ public class SaldoDAO {
             }
         }
         return null;
-    }
 
-    private Connection getConnection() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-   
-    
-    
+    } 
     
 }

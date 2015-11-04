@@ -24,7 +24,7 @@ public class MySQL {
             String database = "BancoTCC";
             String url = "jdbc:mysql://" + nomeServidor + "/" + database;
             String username = "root";
-            String password = "12345";
+            String password = "";
 
             return DriverManager.getConnection(url, username, password);
         } catch (ClassNotFoundException e) {
