@@ -114,6 +114,11 @@ public class MenuPrincipal extends javax.swing.JDialog {
         btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Sair.png"))); // NOI18N
         btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -196,6 +201,10 @@ Adiantamento nomeVariavel = new Adiantamento(null, rootPaneCheckingEnabled);
         SacarDepositar nomeVariavel = new SacarDepositar(null, rootPaneCheckingEnabled);
         nomeVariavel.setVisible(true);
     }//GEN-LAST:event_btnSacarActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+          dispose();
+    }//GEN-LAST:event_btnSairActionPerformed
 
     /**
      * @param args the command line arguments

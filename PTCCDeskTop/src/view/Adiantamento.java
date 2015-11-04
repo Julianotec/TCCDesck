@@ -69,16 +69,26 @@ public class Adiantamento extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(lstFuncionario);
 
-        btnSelecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Go back.png"))); // NOI18N
+        btnSelecionar.setBackground(new java.awt.Color(255, 255, 255));
+        btnSelecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/SetaEsquerda.png"))); // NOI18N
 
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Exit.png"))); // NOI18N
+        btnSair.setBackground(new java.awt.Color(255, 255, 255));
+        btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/SairPequeno.png"))); // NOI18N
         btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         jLabel1.setText("Valor: R$");
 
-        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Apply.png"))); // NOI18N
+        btnSalvar.setBackground(new java.awt.Color(255, 255, 255));
+        btnSalvar.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Salvar.png"))); // NOI18N
         btnSalvar.setText("Salvar");
 
         jLabel2.setText("Saldo: R$");
@@ -148,7 +158,7 @@ public class Adiantamento extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 99, Short.MAX_VALUE)
+                        .addGap(0, 191, Short.MAX_VALUE)
                         .addComponent(btnSair))
                     .addComponent(txtPesquisa)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -165,7 +175,7 @@ public class Adiantamento extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(btnSelecionar)))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 28, Short.MAX_VALUE)
                 .addComponent(btnSair)
                 .addGap(10, 10, 10))
             .addGroup(layout.createSequentialGroup()
@@ -176,6 +186,10 @@ public class Adiantamento extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+      dispose();
+    }//GEN-LAST:event_btnSairActionPerformed
 
     /**
      * @param args the command line arguments
