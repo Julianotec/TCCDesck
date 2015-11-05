@@ -6,14 +6,19 @@
 
 package entity;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-/**
- *
- * @author ricardo_jose_santana
- */
-public class Funcionario {
-   
-    private Integer idFuncionario;
+
+@Entity
+
+public class Funcionario implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     private String nome;
     private String cpf;
     private int senha;
@@ -27,6 +32,13 @@ public class Funcionario {
     private String Email;
     private Double vales;
 
+    @Override
+    public String toString() {
+    return nome;
+    }
+
+    
+    
     public Double getVales() {
         return vales;
     }
@@ -42,15 +54,17 @@ public class Funcionario {
     public void setEmail(String Email) {
         this.Email = Email;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
     
 
-    public Integer getIdFuncionario() {
-        return idFuncionario;
-    }
-
-    public void setIdFuncionario(Integer idFuncionario) {
-        this.idFuncionario = idFuncionario;
-    }
+ 
 
     public String getNome() {
         return nome;

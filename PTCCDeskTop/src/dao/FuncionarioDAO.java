@@ -37,7 +37,7 @@ public class FuncionarioDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.getTransaction().begin();
 
-        Query query = session.createQuery("from entity.funcionario");
+        Query query = session.createQuery("from entity.Funcionario");
         lista = query.list();
 
         session.getTransaction().commit();

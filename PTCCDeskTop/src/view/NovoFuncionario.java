@@ -20,14 +20,14 @@ public class NovoFuncionario extends javax.swing.JDialog {
 
     FuncionarioDAO dao = new FuncionarioDAO();
     List<Funcionario> listaFuncionarios = new ArrayList<Funcionario>();
-
+  
 
 
     public NovoFuncionario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);  
-
+        mostrarTela();
     }
 
     @SuppressWarnings("unchecked")
@@ -281,7 +281,7 @@ public class NovoFuncionario extends javax.swing.JDialog {
         int confirmacao = JOptionPane.showConfirmDialog(this, "Deseja Excluir?");
         if (confirmacao == 0) {
             Funcionario f = (Funcionario) lstFuncionario.getSelectedValue();
-            int id = f.getIdFuncionario();
+            int id = f.getId();
      //       dao.delete(id);
         }
 

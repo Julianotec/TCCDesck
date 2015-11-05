@@ -12,17 +12,18 @@ public class Saldo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idSaldo;
-    private Double Valor;
+    private Integer id;
+    private Double Valor = 100.0;
 
-    public Integer getIdSaldo() {
-        return idSaldo;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdSaldo(Integer idSaldo) {
-        this.idSaldo = idSaldo;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
+  
     public Double getValor() {
         return Valor;
     }

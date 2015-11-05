@@ -174,7 +174,7 @@ public class MenuPrincipal extends javax.swing.JDialog {
         
         Saldo s = new Saldo();
         SaldoDAO dao = new SaldoDAO();
-        s = dao.getSaldoById(4);
+        s = dao.getSaldoById(1);
         double ValorSaldo; 
         ValorSaldo = s.getValor();
         JOptionPane.showMessageDialog(null, "Saldo: R$ " + ValorSaldo);
