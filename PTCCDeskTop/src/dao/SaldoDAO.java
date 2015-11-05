@@ -33,5 +33,13 @@ public class SaldoDAO {
         session.close();
         return s;
     }
-
+  public void salvar(Saldo saldo) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.getTransaction().begin();
+        session.saveOrUpdate(saldo);
+        session.getTransaction().commit();
+        session.close();
+    }
+    
+    
 }

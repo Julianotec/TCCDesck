@@ -45,5 +45,20 @@ public class FuncionarioDAO {
 
         return lista;
     }
-
+ public void excluir(Funcionario funcionario) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.getTransaction().begin();
+        session.delete(funcionario);
+        session.getTransaction().commit();
+        session.close();
+    }
+ public Funcionario getById(Integer id) {
+        Funcionario F = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.getTransaction().begin();
+        F = (Funcionario) session.get(Funcionario.class, id);
+        session.getTransaction().commit();
+        session.close();
+        return F;
+    }
 }
