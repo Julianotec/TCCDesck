@@ -146,7 +146,7 @@ public class MenuPrincipal extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSacar)
                     .addComponent(btnDepositar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -171,12 +171,15 @@ public class MenuPrincipal extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaldoActionPerformed
+        
         Saldo s = new Saldo();
         SaldoDAO dao = new SaldoDAO();
-        s = dao.getSaldoById(1);
+        s = dao.getSaldoById(4);
         double ValorSaldo; 
         ValorSaldo = s.getValor();
-        JOptionPane.showMessageDialog(null, "Saldo: R$" + ValorSaldo);
+        JOptionPane.showMessageDialog(null, "Saldo: R$ " + ValorSaldo);
+        
+        
     }//GEN-LAST:event_btnSaldoActionPerformed
 
     private void btnFecharCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCaixaActionPerformed

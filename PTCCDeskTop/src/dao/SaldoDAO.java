@@ -3,82 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package dao;
-
 
 import entity.Saldo;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 /**
  *
  * @author ricardo jose santana
  */
-public class SaldoDAO extends MySQL{
-  
-    
-    
-    
-    public boolean update(Saldo saldo) {
-          Connection c = this.getConnection();
-        try {
-            PreparedStatement ps = c.prepareStatement("UPDATE Saldo "
-                    + "SET  valor = ?"
-                    + " WHERE idsaldo = ?");
-            ps.setDouble(1, saldo.getValor());
-            ps.setInt(2, saldo.getIdSaldo());
-            ps.execute();
+public class SaldoDAO {
 
-            ps.close();
-            return true;
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            try {
-                c.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-        }
-        return false;
+    public Saldo getSaldoById(int id) {
+        Saldo s = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.getTransaction().begin();
+        s = (Saldo) session.get(Saldo.class, id);
+        session.getTransaction().commit();
+        session.close();
+        return s;
     }
 
-    
-    public Saldo getSaldoById(int id) {
-        Connection c = this.getConnection();
-        Saldo saldo = null;
-        try {
-            PreparedStatement ps = c.prepareStatement("SELECT idSaldo, "
-                    + "( valor )  "
-                    + "FROM saldo WHERE idSaldo = ?");
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-
-                saldo = new Saldo();
-                saldo.setIdSaldo(rs.getInt("idSaldo"));
-                saldo.setValor(rs.getDouble("valor"));
-               
-
-            }
-            rs.close();
-            ps.close();
-            return saldo;
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            try {
-                c.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-        }
-        return null;
-
-    } 
-    
 }

@@ -48,7 +48,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnSacar" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnDepositar" linkSize="2" alignment="3" min="-2" pref="87" max="-2" attributes="0"/>
@@ -104,7 +104,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Depositar"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Cursor Default"/>
+          <Color id="Cursor Padr&#xe3;o"/>
         </Property>
       </Properties>
       <Events>

@@ -143,7 +143,7 @@ public class SacarDepositar extends javax.swing.JDialog {
         Saldo = s.getValor();       
         Saldo = Saldo- ValorSaque;
         s.setValor(Saldo);
-        dao.update(s);
+      //  dao.(1);
     }//GEN-LAST:event_btnSacarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed

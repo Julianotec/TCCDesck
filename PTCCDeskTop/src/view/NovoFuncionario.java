@@ -261,13 +261,13 @@ public class NovoFuncionario extends javax.swing.JDialog {
         } else {
             ObjFuncionario.setAdm(2);
         }
-        dao.insert(ObjFuncionario);
-
+        dao.salvar(ObjFuncionario);
+        mostrarTela();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void mostrarTela() {
 
-        listaFuncionarios = dao.listarFuncionario();
+        listaFuncionarios = dao.getAll();
         DefaultListModel modelo = new DefaultListModel();
         for (Funcionario funcionario : listaFuncionarios) {
             modelo.addElement(funcionario);
@@ -282,7 +282,7 @@ public class NovoFuncionario extends javax.swing.JDialog {
         if (confirmacao == 0) {
             Funcionario f = (Funcionario) lstFuncionario.getSelectedValue();
             int id = f.getIdFuncionario();
-            dao.delete(id);
+     //       dao.delete(id);
         }
 
     }//GEN-LAST:event_btnExcluirActionPerformed
