@@ -14,13 +14,14 @@ import entity.Saldo;
  */
 public class SacarDepositar extends javax.swing.JDialog {
 
-    /**
-     * Creates new form Sacar
-     */
+    Saldo s = new Saldo();
+    SaldoDAO dao = new SaldoDAO();
+
     public SacarDepositar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setLocationRelativeTo(null);  
+        setLocationRelativeTo(null);
+        MostraTela();
     }
 
     /**
@@ -130,22 +131,27 @@ public class SacarDepositar extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacarActionPerformed
-        Saldo s = new Saldo();
-        SaldoDAO dao = new SaldoDAO();
-        lblSaldo.setText(s.getValor()+"");
-        
-        s = dao.getSaldoById(1);
 
-        double  ValorSaque;
+    private void btnSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacarActionPerformed
+        double ValorSaque;
         ValorSaque = Double.parseDouble(txtValor.getText());
         double Saldo;
-        Saldo = s.getValor();       
-        Saldo = Saldo- ValorSaque;
+        Saldo = s.getValor();
+        Saldo = Saldo - ValorSaque;
         s.setValor(Saldo);
-      //  dao.(1);
+        dao.salvar(s);
+        MostraTela();
+        txtValor.setText("");
+        txtDescricao.setText("");
     }//GEN-LAST:event_btnSacarActionPerformed
 
+    public void MostraTela(){
+           s = dao.getSaldoById(1);
+        lblSaldo.setText(s.getValor() + "");
+    }
+    
+    
+    
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         dispose();
     }//GEN-LAST:event_btnSairActionPerformed
