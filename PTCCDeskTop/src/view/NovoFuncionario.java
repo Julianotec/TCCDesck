@@ -20,14 +20,14 @@ public class NovoFuncionario extends javax.swing.JDialog {
 
     FuncionarioDAO dao = new FuncionarioDAO();
     List<Funcionario> listaFuncionarios = new ArrayList<Funcionario>();
-  
-
+    Funcionario ObjFuncionario = new Funcionario();
 
     public NovoFuncionario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setLocationRelativeTo(null);  
+        setLocationRelativeTo(null);
         mostrarTela();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -261,7 +261,6 @@ public class NovoFuncionario extends javax.swing.JDialog {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
-        Funcionario ObjFuncionario = new Funcionario();
         ObjFuncionario.setNome(txtNome.getText());
         ObjFuncionario.setCpf(txtCpf.getText());
         ObjFuncionario.setEmail(txtEmail.getText());
@@ -279,6 +278,9 @@ public class NovoFuncionario extends javax.swing.JDialog {
         }
         dao.salvar(ObjFuncionario);
         mostrarTela();
+        limparTela();
+        ObjFuncionario = new Funcionario();
+        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void mostrarTela() {
@@ -291,24 +293,50 @@ public class NovoFuncionario extends javax.swing.JDialog {
         lstFuncionario.setModel(modelo);
     }
 
+    private void limparTela() {
+        txtNome.setText("");
+        txtCpf.setText("");
+        txtEmail.setText("");
+        txtTelefone.setText("");
+        txtCelular.setText("");
+        txtEndereço.setText("");
+        txtCidade.setText("");
+        txtSalario.setText("");
+        txtEstado.setText("");
+    }
+
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
 
         int confirmacao = JOptionPane.showConfirmDialog(this, "Deseja Excluir?");
         if (confirmacao == 0) {
-            Funcionario f = (Funcionario) lstFuncionario.getSelectedValue();
-            int id = f.getId();
-     //       dao.delete(id);
+            ObjFuncionario = (Funcionario) lstFuncionario.getSelectedValue();
+            dao.excluir(ObjFuncionario);
+            mostrarTela();
+            ObjFuncionario = new Funcionario();
         }
 
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-     dispose();
+        dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
+
+        Integer id = lstFuncionario.getSelectedIndex();
+        System.out.println(id);
+        ObjFuncionario = dao.getById(id );
+        txtNome.setText(ObjFuncionario.getNome());
+        txtCpf.setText(ObjFuncionario.getCpf());
+        txtEmail.setText(ObjFuncionario.getEmail());
+        txtTelefone.setText(ObjFuncionario.getTelefone());
+        txtCelular.setText(ObjFuncionario.getCelular());
+        txtEndereço.setText(ObjFuncionario.getEndereço());
+        txtCidade.setText(ObjFuncionario.getCidade());
+        txtSalario.setText(ObjFuncionario.getSalario() + "");
+        txtEstado.setText(ObjFuncionario.getEstado());
+
     }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
