@@ -33,7 +33,7 @@ public class MenuPrincipal extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnSacar = new javax.swing.JButton();
+        btnSacar1 = new javax.swing.JButton();
         btnDepositar = new javax.swing.JButton();
         btnNovoFuncionario = new javax.swing.JButton();
         btnFecharCaixa = new javax.swing.JButton();
@@ -45,13 +45,13 @@ public class MenuPrincipal extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
 
-        btnSacar.setBackground(new java.awt.Color(255, 255, 255));
-        btnSacar.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        btnSacar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Sacar.png"))); // NOI18N
-        btnSacar.setText("Sacar");
-        btnSacar.addActionListener(new java.awt.event.ActionListener() {
+        btnSacar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnSacar1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        btnSacar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Sacar.png"))); // NOI18N
+        btnSacar1.setText("Sacar");
+        btnSacar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSacarActionPerformed(evt);
+                btnSacar1ActionPerformed(evt);
             }
         });
 
@@ -131,7 +131,7 @@ public class MenuPrincipal extends javax.swing.JDialog {
                     .addComponent(btnAbriGaveta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAdiantamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNovoFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSacar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnSacar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnFecharCaixa, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
@@ -141,14 +141,14 @@ public class MenuPrincipal extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAbriGaveta, btnAdiantamento, btnDepositar, btnFecharCaixa, btnNovoFuncionario, btnSacar, btnSair, btnSaldo});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAbriGaveta, btnAdiantamento, btnDepositar, btnFecharCaixa, btnNovoFuncionario, btnSacar1, btnSair, btnSaldo});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSacar)
+                    .addComponent(btnSacar1)
                     .addComponent(btnDepositar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -165,7 +165,7 @@ public class MenuPrincipal extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAbriGaveta, btnAdiantamento, btnDepositar, btnFecharCaixa, btnNovoFuncionario, btnSacar, btnSair, btnSaldo});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAbriGaveta, btnAdiantamento, btnDepositar, btnFecharCaixa, btnNovoFuncionario, btnSacar1, btnSair, btnSaldo});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -188,7 +188,7 @@ public class MenuPrincipal extends javax.swing.JDialog {
     }//GEN-LAST:event_btnFecharCaixaActionPerformed
 
     private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
-        SacarDepositar nomeVariavel = new SacarDepositar(null, rootPaneCheckingEnabled);
+        Depositar nomeVariavel = new Depositar(null, rootPaneCheckingEnabled);
         nomeVariavel.setVisible(true);
     }//GEN-LAST:event_btnDepositarActionPerformed
 
@@ -206,10 +206,12 @@ public class MenuPrincipal extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btnAdiantamentoActionPerformed
 
-    private void btnSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacarActionPerformed
-        SacarDepositar nomeVariavel = new SacarDepositar(null, rootPaneCheckingEnabled);
+    private void btnSacar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacar1ActionPerformed
+        Sacar nomeVariavel = new Sacar(null, rootPaneCheckingEnabled);
         nomeVariavel.setVisible(true);
-    }//GEN-LAST:event_btnSacarActionPerformed
+      
+  
+    }//GEN-LAST:event_btnSacar1ActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         dispose();
@@ -263,7 +265,7 @@ public class MenuPrincipal extends javax.swing.JDialog {
     private javax.swing.JButton btnDepositar;
     private javax.swing.JButton btnFecharCaixa;
     private javax.swing.JButton btnNovoFuncionario;
-    private javax.swing.JButton btnSacar;
+    private javax.swing.JButton btnSacar1;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSaldo;
     // End of variables declaration//GEN-END:variables
