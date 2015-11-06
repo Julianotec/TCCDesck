@@ -12,12 +12,12 @@ import entity.Saldo;
  *
  * @author juliano_ferreira2
  */
-public class SacarDepositar extends javax.swing.JDialog {
+public class Depositar extends javax.swing.JDialog {
 
     Saldo s = new Saldo();
     SaldoDAO dao = new SaldoDAO();
 
-    public SacarDepositar(java.awt.Frame parent, boolean modal) {
+    public Depositar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -33,35 +33,17 @@ public class SacarDepositar extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnSair = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtDescricao = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         lblSaldo = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtValor = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        btnSacar = new javax.swing.JButton();
-        btnSair = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtDescricao = new javax.swing.JTextArea();
+        btnDepositar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jLabel1.setText("Saldo: R$");
-
-        lblSaldo.setText("----");
-
-        jLabel3.setText("Valor:");
-
-        jLabel4.setText("Descrição:");
-
-        btnSacar.setBackground(new java.awt.Color(255, 255, 255));
-        btnSacar.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
-        btnSacar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Confirmar.png"))); // NOI18N
-        btnSacar.setText("Sacar");
-        btnSacar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSacarActionPerformed(evt);
-            }
-        });
 
         btnSair.setBackground(new java.awt.Color(255, 255, 255));
         btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
@@ -76,6 +58,24 @@ public class SacarDepositar extends javax.swing.JDialog {
         txtDescricao.setColumns(20);
         txtDescricao.setRows(5);
         jScrollPane1.setViewportView(txtDescricao);
+
+        jLabel1.setText("Saldo: R$");
+
+        lblSaldo.setText("----");
+
+        jLabel3.setText("Valor:");
+
+        jLabel4.setText("Descrição:");
+
+        btnDepositar.setBackground(new java.awt.Color(255, 255, 255));
+        btnDepositar.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        btnDepositar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Confirmar.png"))); // NOI18N
+        btnDepositar.setText("Depositar");
+        btnDepositar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,7 +102,7 @@ public class SacarDepositar extends javax.swing.JDialog {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSacar)
+                            .addComponent(btnDepositar)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
@@ -122,8 +122,8 @@ public class SacarDepositar extends javax.swing.JDialog {
                     .addComponent(jLabel4)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSacar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(btnDepositar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSair)
                 .addGap(13, 13, 13))
         );
@@ -131,34 +131,31 @@ public class SacarDepositar extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnSairActionPerformed
 
-    private void btnSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacarActionPerformed
-        double ValorSaque;
-        ValorSaque = Double.parseDouble(txtValor.getText());
+    private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
+        double ValorDeposito;
+        ValorDeposito = Double.parseDouble(txtValor.getText());
         double Saldo;
         Saldo = s.getValor();
-        Saldo = Saldo - ValorSaque;
+        Saldo = Saldo + ValorDeposito;
         s.setValor(Saldo);
         dao.salvar(s);
         MostraTela();
         txtValor.setText("");
         txtDescricao.setText("");
-    }//GEN-LAST:event_btnSacarActionPerformed
-
-    public void MostraTela(){
-           s = dao.getSaldoById(1);
-        lblSaldo.setText(s.getValor() + "");
-    }
-    
-    
-    
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        dispose();
-    }//GEN-LAST:event_btnSairActionPerformed
+    }//GEN-LAST:event_btnDepositarActionPerformed
 
     /**
      * @param args the command line arguments
      */
+    public void MostraTela() {
+        s = dao.getSaldoById(1);
+        lblSaldo.setText(s.getValor() + "");
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -173,20 +170,20 @@ public class SacarDepositar extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SacarDepositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Depositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SacarDepositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Depositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SacarDepositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Depositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SacarDepositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Depositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                SacarDepositar dialog = new SacarDepositar(new javax.swing.JFrame(), true);
+                Depositar dialog = new Depositar(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -199,7 +196,7 @@ public class SacarDepositar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSacar;
+    private javax.swing.JButton btnDepositar;
     private javax.swing.JButton btnSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
