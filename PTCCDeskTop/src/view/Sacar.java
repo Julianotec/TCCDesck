@@ -5,8 +5,11 @@
  */
 package view;
 
+import dao.FuncionarioDAO;
 import dao.SaldoDAO;
+import entity.Funcionario;
 import entity.Saldo;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,7 +19,8 @@ public class Sacar extends javax.swing.JDialog {
 
     Saldo s = new Saldo();
     SaldoDAO dao = new SaldoDAO();
-    
+    FuncionarioDAO daoFuncionario = new FuncionarioDAO();
+    Funcionario f = new Funcionario();
 
     public Sacar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -134,25 +138,32 @@ public class Sacar extends javax.swing.JDialog {
 
 
     private void btnSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacarActionPerformed
-        double ValorSaque;
-        ValorSaque = Double.parseDouble(txtValor.getText());
-        double Saldo;
-        Saldo = s.getValor();
-        Saldo = Saldo - ValorSaque;
-        s.setValor(Saldo);
-        dao.salvar(s);
-        MostraTela();
-        txtValor.setText("");
-        txtDescricao.setText("");
+        Integer senha;
+        senha = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite a Senha"));
+        f = daoFuncionario.getBySenha(senha);
+        if (f == null) {
+            JOptionPane.showMessageDialog(null, "Senha Invalida!");
+        } else {
+            double ValorSaque;
+            ValorSaque = Double.parseDouble(txtValor.getText());
+            double Saldo;
+            Saldo = s.getValor();
+            Saldo = Saldo - ValorSaque;
+            s.setValor(Saldo);
+            dao.salvar(s);
+            MostraTela();
+            txtValor.setText("");
+            txtDescricao.setText("");
+            JOptionPane.showMessageDialog(null, "Saque realisado com sucesso!");
+        }
     }//GEN-LAST:event_btnSacarActionPerformed
 
-    public void MostraTela(){
-         s = dao.getSaldoById(1);
+    public void MostraTela() {
+        s = dao.getSaldoById(1);
         lblSaldo.setText(s.getValor() + "");
     }
-    
-    
-    
+
+
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         dispose();
     }//GEN-LAST:event_btnSairActionPerformed

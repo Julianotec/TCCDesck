@@ -5,8 +5,11 @@
  */
 package view;
 
+import dao.FuncionarioDAO;
 import dao.SaldoDAO;
+import entity.Funcionario;
 import entity.Saldo;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,6 +19,8 @@ public class Depositar extends javax.swing.JDialog {
 
     Saldo s = new Saldo();
     SaldoDAO dao = new SaldoDAO();
+    FuncionarioDAO daoFuncionario = new FuncionarioDAO();
+    Funcionario f = new Funcionario();
 
     public Depositar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -136,16 +141,24 @@ public class Depositar extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
-        double ValorDeposito;
-        ValorDeposito = Double.parseDouble(txtValor.getText());
-        double Saldo;
-        Saldo = s.getValor();
-        Saldo = Saldo + ValorDeposito;
-        s.setValor(Saldo);
-        dao.salvar(s);
-        MostraTela();
-        txtValor.setText("");
-        txtDescricao.setText("");
+        Integer senha;
+        senha = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite a Senha"));
+        f = daoFuncionario.getBySenha(senha);
+        if (f == null) {
+            JOptionPane.showMessageDialog(null, "Senha Invalida!");
+        } else {
+            double ValorDeposito;
+            ValorDeposito = Double.parseDouble(txtValor.getText());
+            double Saldo;
+            Saldo = s.getValor();
+            Saldo = Saldo + ValorDeposito;
+            s.setValor(Saldo);
+            dao.salvar(s);
+            MostraTela();
+            txtValor.setText("");
+            txtDescricao.setText("");
+            JOptionPane.showMessageDialog(null, "Deposito realisado com sucesso!");
+        }
     }//GEN-LAST:event_btnDepositarActionPerformed
 
     /**

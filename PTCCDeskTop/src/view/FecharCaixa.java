@@ -6,6 +6,9 @@
 
 package view;
 
+import dao.extratoDAO;
+import entity.Extrato;
+
 /**
  *
  * @author juliano_ferreira2
@@ -39,7 +42,7 @@ public class FecharCaixa extends javax.swing.JDialog {
         btnGerar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtSaldoFinal = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        lblSaldo = new javax.swing.JLabel();
         btnSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -66,7 +69,7 @@ public class FecharCaixa extends javax.swing.JDialog {
 
         jLabel4.setText("Valor Proximo Dia:");
 
-        jLabel5.setText("----");
+        lblSaldo.setText("----");
 
         btnSair.setBackground(new java.awt.Color(255, 255, 255));
         btnSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -108,7 +111,7 @@ public class FecharCaixa extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtValorEmCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))))
+                            .addComponent(lblSaldo))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -117,7 +120,7 @@ public class FecharCaixa extends javax.swing.JDialog {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel5))
+                    .addComponent(lblSaldo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -145,7 +148,7 @@ public class FecharCaixa extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnGerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarActionPerformed
-        // TODO add your handling code here:
+     
     }//GEN-LAST:event_btnGerarActionPerformed
 
     /**
@@ -197,8 +200,8 @@ public class FecharCaixa extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblSaldo;
     private javax.swing.JTextArea txtDecrição;
     private javax.swing.JTextField txtSaldoFinal;
     private javax.swing.JTextField txtValorEmCaixa;

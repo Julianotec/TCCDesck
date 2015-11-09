@@ -6,6 +6,8 @@
 package view;
 
 import dao.SaldoDAO;
+import dao.extratoDAO;
+import entity.Extrato;
 import entity.Saldo;
 import javax.swing.JOptionPane;
 
@@ -185,6 +187,11 @@ public class MenuPrincipal extends javax.swing.JDialog {
     private void btnFecharCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCaixaActionPerformed
         FecharCaixa nomeVariavel = new FecharCaixa(null, rootPaneCheckingEnabled);
         nomeVariavel.setVisible(true);
+        extratoDAO dao = new extratoDAO();
+        Extrato extrato = new Extrato();
+        extrato = dao.getById(1);
+        String nome = extrato.getNomeFuncionario();
+        System.out.println("nome");
     }//GEN-LAST:event_btnFecharCaixaActionPerformed
 
     private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed

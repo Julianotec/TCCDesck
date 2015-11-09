@@ -21,7 +21,7 @@ public class Funcionario implements Serializable{
     private Integer id;
     private String nome;
     private String cpf;
-    private int senha;
+    private Integer senha;
     private String endereço;
     private String telefone;
     private String celular;
@@ -82,15 +82,14 @@ public class Funcionario implements Serializable{
         this.cpf = cpf;
     }
 
-    public int getSenha() {
+    public Integer getSenha() {
         return senha;
     }
 
-    public void setSenha(int senha) {
+    public void setSenha(Integer senha) {
         this.senha = senha;
     }
 
- 
 
     public String getEndereço() {
         return endereço;

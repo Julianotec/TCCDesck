@@ -5,8 +5,8 @@
  */
 package dao;
 
-
 import entity.Funcionario;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +22,7 @@ import org.hibernate.Session;
  */
 public class FuncionarioDAO {
 
-     public void salvar(Funcionario funcionario) {
+    public void salvar(Funcionario funcionario) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.getTransaction().begin();
         session.saveOrUpdate(funcionario);
@@ -30,9 +30,7 @@ public class FuncionarioDAO {
         session.close();
     }
 
-  
-
-  public List<Funcionario> getAll() {
+    public List<Funcionario> getAll() {
         List<Funcionario> lista = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.getTransaction().begin();
@@ -45,14 +43,16 @@ public class FuncionarioDAO {
 
         return lista;
     }
- public void excluir(Funcionario funcionario) {
+
+    public void excluir(Funcionario funcionario) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.getTransaction().begin();
         session.delete(funcionario);
         session.getTransaction().commit();
         session.close();
     }
- public Funcionario getById(Integer id) {
+
+    public Funcionario getById(Integer id) {
         Funcionario F = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.getTransaction().begin();
@@ -60,6 +60,23 @@ public class FuncionarioDAO {
         session.getTransaction().commit();
         session.close();
         return F;
+    }
+
+    public Funcionario getBySenha(Integer senha) {
+        Funcionario f = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.getTransaction().begin();
+        List<Funcionario> lista;
+        Query query = session.createQuery("from entity.Funcionario where senha = :senhaInformada");
+        query.setParameter("senhaInformada", senha);
+        lista = query.list();
+        if (lista.size() != 0) {
+            f = lista.get(0);
+        }
+        session.getTransaction().commit();
+        session.close();
+
+        return f;
     }
 
     public void excluir(Integer id) {
