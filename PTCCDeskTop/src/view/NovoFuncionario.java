@@ -118,6 +118,17 @@ public class NovoFuncionario extends javax.swing.JDialog {
 
         jLabel11.setText("Salario");
 
+        txtPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPesquisaActionPerformed(evt);
+            }
+        });
+        txtPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPesquisaKeyReleased(evt);
+            }
+        });
+
         btnSair.setBackground(new java.awt.Color(255, 255, 255));
         btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/SairPequeno.png"))); // NOI18N
@@ -324,9 +335,7 @@ public class NovoFuncionario extends javax.swing.JDialog {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
 
-        Integer id = lstFuncionario.getSelectedIndex();
-        System.out.println(id);
-        ObjFuncionario = dao.getById(id );
+        ObjFuncionario  = (Funcionario) lstFuncionario.getSelectedValue();
         txtNome.setText(ObjFuncionario.getNome());
         txtCpf.setText(ObjFuncionario.getCpf());
         txtEmail.setText(ObjFuncionario.getEmail());
@@ -338,6 +347,20 @@ public class NovoFuncionario extends javax.swing.JDialog {
         txtEstado.setText(ObjFuncionario.getEstado());
 
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void txtPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaActionPerformed
+   
+    }//GEN-LAST:event_txtPesquisaActionPerformed
+
+    private void txtPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyReleased
+     DefaultListModel modelo = new DefaultListModel();
+        for (Funcionario funcionario : listaFuncionarios) {
+            if (funcionario.getNome().startsWith(txtPesquisa.getText())) {
+                modelo.addElement(funcionario);
+            }
+        }
+        lstFuncionario.setModel(modelo);      
+    }//GEN-LAST:event_txtPesquisaKeyReleased
 
     /**
      * @param args the command line arguments
