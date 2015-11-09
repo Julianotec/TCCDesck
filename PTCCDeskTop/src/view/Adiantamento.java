@@ -3,8 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package view;
+
+import dao.FuncionarioDAO;
+import dao.SaldoDAO;
+import entity.Funcionario;
+import entity.Saldo;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -12,13 +19,18 @@ package view;
  */
 public class Adiantamento extends javax.swing.JDialog {
 
-    /**
-     * Creates new form Adiantamento
-     */
+    
+    SaldoDAO daoS = new SaldoDAO();
+    FuncionarioDAO dao = new FuncionarioDAO();
+    List<Funcionario> listaFuncionarios = new ArrayList<Funcionario>();
+    Funcionario ObjFuncionario = new Funcionario();
+
     public Adiantamento(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setLocationRelativeTo(null);  
+        setLocationRelativeTo(null);
+        mostrarTela();
+
     }
 
     /**
@@ -46,6 +58,8 @@ public class Adiantamento extends javax.swing.JDialog {
         lblValorDevido = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblFuncionario = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lblSalario = new javax.swing.JLabel();
 
         jInternalFrame1.setVisible(true);
 
@@ -61,6 +75,17 @@ public class Adiantamento extends javax.swing.JDialog {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        txtPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPesquisaActionPerformed(evt);
+            }
+        });
+        txtPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPesquisaKeyReleased(evt);
+            }
+        });
 
         lstFuncionario.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -113,23 +138,36 @@ public class Adiantamento extends javax.swing.JDialog {
 
         lblFuncionario.setText("-----");
 
+        jLabel3.setText("Salario: R$");
+
+        lblSalario.setText("-----");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel6)
-                    .addComponent(btnSalvar))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel1)
+                                .addComponent(btnSalvar)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel3)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel6)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblFuncionario)
                     .addComponent(lblSaldo)
+                    .addComponent(lblSalario)
                     .addComponent(lblValorDevido))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
@@ -147,11 +185,15 @@ public class Adiantamento extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(lblFuncionario))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(lblSalario))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(lblValorDevido))
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addComponent(btnSalvar)
                 .addGap(0, 53, Short.MAX_VALUE))
         );
@@ -198,16 +240,63 @@ public class Adiantamento extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-      dispose();
+        dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
+        Saldo s = new Saldo();
+        s = daoS.getSaldoById(1);
+        double valor = Double.parseDouble(txtValor.getText());
+        lblSalario.setText(ObjFuncionario.getSalario() + "");
+        double vales;
+        double Saldo;
+        vales = ObjFuncionario.getVales();
+        Saldo = s.getValor();
+        Saldo = Saldo - valor;
+        vales = vales + valor;
+        s.setValor(Saldo);
+        daoS.salvar(s);
+        ObjFuncionario.setVales(vales);
+        dao.salvar(ObjFuncionario);
+        mostrarTela();
+        lblValorDevido.setText(ObjFuncionario.getVales()+"");
+        
+        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
-        // TODO add your handling code here:
+        ObjFuncionario = (Funcionario) lstFuncionario.getSelectedValue();
+        lblSalario.setText(ObjFuncionario.getSalario()+"");
+        lblValorDevido.setText(ObjFuncionario.getVales()+"");
+        lblFuncionario.setText(ObjFuncionario.getNome());
     }//GEN-LAST:event_btnSelecionarActionPerformed
+
+    private void txtPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaActionPerformed
+
+    }//GEN-LAST:event_txtPesquisaActionPerformed
+
+    private void txtPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyReleased
+        DefaultListModel modelo = new DefaultListModel();
+        for (Funcionario funcionario : listaFuncionarios) {
+            if (funcionario.getNome().startsWith(txtPesquisa.getText())) {
+                modelo.addElement(funcionario);
+            }
+
+        }
+        lstFuncionario.setModel(modelo);
+    }//GEN-LAST:event_txtPesquisaKeyReleased
+    private void mostrarTela() {
+        Saldo s = new Saldo();
+        s = daoS.getSaldoById(1);
+        lblSaldo.setText(s.getValor() + "");
+        listaFuncionarios = dao.getAll();
+        DefaultListModel modelo = new DefaultListModel();
+        for (Funcionario funcionario : listaFuncionarios) {
+            modelo.addElement(funcionario);
+        }
+        lstFuncionario.setModel(modelo);
+
+    }
 
     /**
      * @param args the command line arguments
@@ -258,11 +347,13 @@ public class Adiantamento extends javax.swing.JDialog {
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblFuncionario;
+    private javax.swing.JLabel lblSalario;
     private javax.swing.JLabel lblSaldo;
     private javax.swing.JLabel lblValorDevido;
     private javax.swing.JList lstFuncionario;

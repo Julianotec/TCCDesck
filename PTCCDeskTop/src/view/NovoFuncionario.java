@@ -118,6 +118,12 @@ public class NovoFuncionario extends javax.swing.JDialog {
 
         jLabel11.setText("Salario");
 
+        txtSalario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSalarioActionPerformed(evt);
+            }
+        });
+
         txtPesquisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPesquisaActionPerformed(evt);
@@ -361,6 +367,10 @@ public class NovoFuncionario extends javax.swing.JDialog {
         }
         lstFuncionario.setModel(modelo);      
     }//GEN-LAST:event_txtPesquisaKeyReleased
+
+    private void txtSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSalarioActionPerformed
 
     /**
      * @param args the command line arguments
