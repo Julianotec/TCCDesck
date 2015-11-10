@@ -256,7 +256,10 @@ public class Adiantamento extends javax.swing.JDialog {
         f = dao.getBySenha(senha);
         if (ObjFuncionario == null) {
             JOptionPane.showMessageDialog(null, "Senha Invalida!");
-        } else {
+        } else {         
+            if(f.getAdm() == 2){
+            JOptionPane.showMessageDialog(null, "Usuario não Autorizado");
+            }else{
             //realizar adiantamento
             Saldo s = new Saldo();
             s = daoS.getSaldoById(1);
@@ -285,7 +288,8 @@ public class Adiantamento extends javax.swing.JDialog {
             //limpar tela
             txtValor.setText("");
             JOptionPane.showMessageDialog(null, "Adiantamento efetuado com sucesso!");
-        }
+            }
+            }
 
     }//GEN-LAST:event_btnSalvarActionPerformed
 

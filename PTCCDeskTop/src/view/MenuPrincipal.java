@@ -17,13 +17,15 @@ import javax.swing.JOptionPane;
  */
 public class MenuPrincipal extends javax.swing.JDialog {
 
-    /**
-     * Creates new form MenuPrincipal
-     */
+    Saldo s = new Saldo();
+    SaldoDAO dao = new SaldoDAO();
+
     public MenuPrincipal(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        s.setValor(1000.0);
+        dao.salvar(s);
     }
 
     /**
@@ -172,16 +174,16 @@ public class MenuPrincipal extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void btnSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaldoActionPerformed
-        
-        Saldo s = new Saldo();
-        SaldoDAO dao = new SaldoDAO();
+
+    
         s = dao.getSaldoById(1);
-        double ValorSaldo; 
+        double ValorSaldo;
         ValorSaldo = s.getValor();
         JOptionPane.showMessageDialog(null, "Saldo: R$ " + ValorSaldo);
-        
-        
+
+
     }//GEN-LAST:event_btnSaldoActionPerformed
 
     private void btnFecharCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCaixaActionPerformed
@@ -216,8 +218,8 @@ public class MenuPrincipal extends javax.swing.JDialog {
     private void btnSacar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacar1ActionPerformed
         Sacar nomeVariavel = new Sacar(null, rootPaneCheckingEnabled);
         nomeVariavel.setVisible(true);
-      
-  
+
+
     }//GEN-LAST:event_btnSacar1ActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed

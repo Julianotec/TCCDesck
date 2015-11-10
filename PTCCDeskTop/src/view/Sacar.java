@@ -150,7 +150,7 @@ public class Sacar extends javax.swing.JDialog {
         if (f == null) {
             JOptionPane.showMessageDialog(null, "Senha Invalida!");
         } else {
-           //sacar
+            //sacar
             double ValorSaque;
             ValorSaque = Double.parseDouble(txtValor.getText());
             double Saldo;

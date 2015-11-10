@@ -277,27 +277,40 @@ public class NovoFuncionario extends javax.swing.JDialog {
 
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-
-        ObjFuncionario.setNome(txtNome.getText());
-        ObjFuncionario.setCpf(txtCpf.getText());
-        ObjFuncionario.setEmail(txtEmail.getText());
-        ObjFuncionario.setTelefone(txtTelefone.getText());
-        ObjFuncionario.setCelular(txtCelular.getText());
-        ObjFuncionario.setEndereço(txtEndereço.getText());
-        ObjFuncionario.setCidade(txtCidade.getText());
-        ObjFuncionario.setEstado(txtEstado.getText());
-        ObjFuncionario.setSalario(Double.parseDouble(txtSalario.getText()));
-        ObjFuncionario.setSenha(12345);
-        if (cbAdm.isSelected()) {
-            ObjFuncionario.setAdm(1);
+        Integer senha;
+        Funcionario f = new Funcionario();
+        senha = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite a Senha"));
+        f = dao.getBySenha(senha);
+        if (f == null) {
+            JOptionPane.showMessageDialog(null, "Senha Invalida!");
         } else {
-            ObjFuncionario.setAdm(2);
+            if (f.getAdm() == 2) {
+                JOptionPane.showMessageDialog(null, "Usuario não Autorizado");
+            } else {
+
+                ObjFuncionario.setNome(txtNome.getText());
+                ObjFuncionario.setCpf(txtCpf.getText());
+                ObjFuncionario.setEmail(txtEmail.getText());
+                ObjFuncionario.setTelefone(txtTelefone.getText());
+                ObjFuncionario.setCelular(txtCelular.getText());
+                ObjFuncionario.setEndereço(txtEndereço.getText());
+                ObjFuncionario.setCidade(txtCidade.getText());
+                ObjFuncionario.setEstado(txtEstado.getText());
+                ObjFuncionario.setSalario(Double.parseDouble(txtSalario.getText()));
+                ObjFuncionario.setSenha(12345);
+                ObjFuncionario.setVales(0.0);
+                if (cbAdm.isSelected()) {
+                    ObjFuncionario.setAdm(1);
+                } else {
+                    ObjFuncionario.setAdm(2);
+                }
+                dao.salvar(ObjFuncionario);
+                mostrarTela();
+                limparTela();
+                ObjFuncionario = new Funcionario();
+            }
         }
-        dao.salvar(ObjFuncionario);
-        mostrarTela();
-        limparTela();
-        ObjFuncionario = new Funcionario();
-        
+
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void mostrarTela() {
@@ -341,7 +354,7 @@ public class NovoFuncionario extends javax.swing.JDialog {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
 
-        ObjFuncionario  = (Funcionario) lstFuncionario.getSelectedValue();
+        ObjFuncionario = (Funcionario) lstFuncionario.getSelectedValue();
         txtNome.setText(ObjFuncionario.getNome());
         txtCpf.setText(ObjFuncionario.getCpf());
         txtEmail.setText(ObjFuncionario.getEmail());
@@ -355,17 +368,17 @@ public class NovoFuncionario extends javax.swing.JDialog {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void txtPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaActionPerformed
-   
+
     }//GEN-LAST:event_txtPesquisaActionPerformed
 
     private void txtPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyReleased
-     DefaultListModel modelo = new DefaultListModel();
+        DefaultListModel modelo = new DefaultListModel();
         for (Funcionario funcionario : listaFuncionarios) {
             if (funcionario.getNome().startsWith(txtPesquisa.getText())) {
                 modelo.addElement(funcionario);
             }
         }
-        lstFuncionario.setModel(modelo);      
+        lstFuncionario.setModel(modelo);
     }//GEN-LAST:event_txtPesquisaKeyReleased
 
     private void txtSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioActionPerformed
