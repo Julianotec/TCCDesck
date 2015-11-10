@@ -7,8 +7,12 @@ package view;
 
 import dao.FuncionarioDAO;
 import dao.SaldoDAO;
+import dao.extratoDAO;
+import entity.Extrato;
 import entity.Funcionario;
 import entity.Saldo;
+import java.time.Instant;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +25,8 @@ public class Depositar extends javax.swing.JDialog {
     SaldoDAO dao = new SaldoDAO();
     FuncionarioDAO daoFuncionario = new FuncionarioDAO();
     Funcionario f = new Funcionario();
+    Extrato e = new Extrato();
+    extratoDAO daoExtrato = new extratoDAO();
 
     public Depositar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -147,6 +153,7 @@ public class Depositar extends javax.swing.JDialog {
         if (f == null) {
             JOptionPane.showMessageDialog(null, "Senha Invalida!");
         } else {
+            //depositar
             double ValorDeposito;
             ValorDeposito = Double.parseDouble(txtValor.getText());
             double Saldo;
@@ -155,6 +162,16 @@ public class Depositar extends javax.swing.JDialog {
             s.setValor(Saldo);
             dao.salvar(s);
             MostraTela();
+           
+            //salvar extrato
+            e.setNomeFuncionario(f.getNome());
+            e.setDescricao(txtDescricao.getText() + "");
+            e.setTipo("Deposito");
+            e.setValor(ValorDeposito);
+            e.setData(Date.from(Instant.EPOCH));
+            daoExtrato.salvar(e);
+            
+            //limpar tela
             txtValor.setText("");
             txtDescricao.setText("");
             JOptionPane.showMessageDialog(null, "Deposito realisado com sucesso!");

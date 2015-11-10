@@ -7,8 +7,12 @@ package view;
 
 import dao.FuncionarioDAO;
 import dao.SaldoDAO;
+import dao.extratoDAO;
+import entity.Extrato;
 import entity.Funcionario;
 import entity.Saldo;
+import java.time.Instant;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +25,8 @@ public class Sacar extends javax.swing.JDialog {
     SaldoDAO dao = new SaldoDAO();
     FuncionarioDAO daoFuncionario = new FuncionarioDAO();
     Funcionario f = new Funcionario();
+    Extrato e = new Extrato();
+    extratoDAO daoExtrato = new extratoDAO();
 
     public Sacar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -144,6 +150,7 @@ public class Sacar extends javax.swing.JDialog {
         if (f == null) {
             JOptionPane.showMessageDialog(null, "Senha Invalida!");
         } else {
+           //sacar
             double ValorSaque;
             ValorSaque = Double.parseDouble(txtValor.getText());
             double Saldo;
@@ -151,10 +158,18 @@ public class Sacar extends javax.swing.JDialog {
             Saldo = Saldo - ValorSaque;
             s.setValor(Saldo);
             dao.salvar(s);
-            MostraTela();
+            //salvar extrato
+            e.setNomeFuncionario(f.getNome());
+            e.setDescricao(txtDescricao.getText() + "");
+            e.setTipo("Saque");
+            e.setValor(ValorSaque);
+            e.setData(Date.from(Instant.EPOCH));
+            daoExtrato.salvar(e);
+            //limpar tela
             txtValor.setText("");
             txtDescricao.setText("");
             JOptionPane.showMessageDialog(null, "Saque realisado com sucesso!");
+            MostraTela();
         }
     }//GEN-LAST:event_btnSacarActionPerformed
 

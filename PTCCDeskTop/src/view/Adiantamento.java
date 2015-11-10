@@ -7,11 +7,16 @@ package view;
 
 import dao.FuncionarioDAO;
 import dao.SaldoDAO;
+import dao.extratoDAO;
+import entity.Extrato;
 import entity.Funcionario;
 import entity.Saldo;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,11 +24,12 @@ import javax.swing.DefaultListModel;
  */
 public class Adiantamento extends javax.swing.JDialog {
 
-    
     SaldoDAO daoS = new SaldoDAO();
     FuncionarioDAO dao = new FuncionarioDAO();
     List<Funcionario> listaFuncionarios = new ArrayList<Funcionario>();
     Funcionario ObjFuncionario = new Funcionario();
+    Extrato e = new Extrato();
+    extratoDAO daoExtrato = new extratoDAO();
 
     public Adiantamento(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -244,30 +250,49 @@ public class Adiantamento extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        Saldo s = new Saldo();
-        s = daoS.getSaldoById(1);
-        double valor = Double.parseDouble(txtValor.getText());
-        lblSalario.setText(ObjFuncionario.getSalario() + "");
-        double vales;
-        double Saldo;
-        vales = ObjFuncionario.getVales();
-        Saldo = s.getValor();
-        Saldo = Saldo - valor;
-        vales = vales + valor;
-        s.setValor(Saldo);
-        daoS.salvar(s);
-        ObjFuncionario.setVales(vales);
-        dao.salvar(ObjFuncionario);
-        mostrarTela();
-        lblValorDevido.setText(ObjFuncionario.getVales()+"");
-        
-        
+        Integer senha;
+        senha = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite a Senha"));
+        Funcionario f = new Funcionario();
+        f = dao.getBySenha(senha);
+        if (ObjFuncionario == null) {
+            JOptionPane.showMessageDialog(null, "Senha Invalida!");
+        } else {
+            //realizar adiantamento
+            Saldo s = new Saldo();
+            s = daoS.getSaldoById(1);
+            double valor = Double.parseDouble(txtValor.getText());
+            lblSalario.setText(ObjFuncionario.getSalario() + "");
+            double vales =  ObjFuncionario.getVales();
+            double Saldo = s.getValor();
+            Saldo = Saldo - valor;
+            vales = vales + valor;
+            s.setValor(Saldo);
+            daoS.salvar(s);
+            ObjFuncionario.setVales(vales);
+            dao.salvar(ObjFuncionario);
+            mostrarTela();
+            lblValorDevido.setText(ObjFuncionario.getVales() + "");
+
+            //salvar extrato
+            e.setNomeFuncionario(f.getNome());
+            e.setDescricao("Vale Para funcionario o "+ObjFuncionario.getNome());
+            e.setTipo("Adiantamento");
+            e.setValor(valor);
+            e.setData(Date.from(Instant.EPOCH));
+            daoExtrato.salvar(e);
+            f = null;
+            
+            //limpar tela
+            txtValor.setText("");
+            JOptionPane.showMessageDialog(null, "Adiantamento efetuado com sucesso!");
+        }
+
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
         ObjFuncionario = (Funcionario) lstFuncionario.getSelectedValue();
-        lblSalario.setText(ObjFuncionario.getSalario()+"");
-        lblValorDevido.setText(ObjFuncionario.getVales()+"");
+        lblSalario.setText(ObjFuncionario.getSalario() + "");
+        lblValorDevido.setText(ObjFuncionario.getVales() + "");
         lblFuncionario.setText(ObjFuncionario.getNome());
     }//GEN-LAST:event_btnSelecionarActionPerformed
 

@@ -15,6 +15,7 @@
         <mapping class="entity.Saldo" />
         <mapping class="entity.Funcionario" />
         <mapping class="entity.Extrato" />
+        <mapping class="entity.Caixa" />
        
     
     </session-factory>
