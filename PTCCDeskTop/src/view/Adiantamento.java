@@ -281,7 +281,7 @@ public class Adiantamento extends javax.swing.JDialog {
             e.setDescricao("Vale Para funcionario o "+ObjFuncionario.getNome());
             e.setTipo("Adiantamento");
             e.setValor(valor);
-            e.setData(Date.from(Instant.EPOCH));
+            e.setData(new Date());
             daoExtrato.salvar(e);
             f = null;
             

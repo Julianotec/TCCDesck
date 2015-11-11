@@ -168,7 +168,7 @@ public class Depositar extends javax.swing.JDialog {
             e.setDescricao(txtDescricao.getText() + "");
             e.setTipo("Deposito");
             e.setValor(ValorDeposito);
-            e.setData(Date.from(Instant.EPOCH));
+            e.setData(new Date());
             daoExtrato.salvar(e);
             
             //limpar tela

@@ -13,6 +13,8 @@ import entity.Caixa;
 import entity.Extrato;
 import entity.Funcionario;
 import entity.Saldo;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -175,7 +177,9 @@ public class FecharCaixa extends javax.swing.JDialog {
             c.setUsuario(f.getNome());
             c.setSaldoReal(valorEmCaixa);
             c.setDescricao(txtDecrição.getText());
-            c.setData(Date.from(Instant.EPOCH));
+      //    DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+      //    Date date = (Date) formatter.parse(txt);
+            c.setData(new Date());
             c.setQuebraDeCaixa(valorEmCaixa - saldo);
             s.setValor(valorReal);
             daoSaldo.salvar(s);
@@ -186,15 +190,11 @@ public class FecharCaixa extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btnGerarActionPerformed
 
-    
     public void MostraTela() {
         s = daoSaldo.getSaldoById(1);
         lblSaldo.setText(s.getValor() + "");
     }
-    
-    
-    
-    
+
     /**
      * @param args the command line arguments
      */

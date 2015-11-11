@@ -78,6 +78,24 @@ public class FuncionarioDAO {
 
         return f;
     }
+    
+    public Funcionario getBycpf(String cpf) {
+        Funcionario f = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.getTransaction().begin();
+        List<Funcionario> lista;
+        Query query = session.createQuery("from entity.Funcionario where cpf = :cpfInformada");
+        query.setParameter("cpfInformada", cpf);
+        lista = query.list();
+        if (lista.size() != 0) {
+            f = lista.get(0);
+        }
+        session.getTransaction().commit();
+        session.close();
+
+        return f;
+    }
+    
 
     public void excluir(Integer id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

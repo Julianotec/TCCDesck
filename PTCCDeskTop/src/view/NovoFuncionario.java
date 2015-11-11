@@ -282,13 +282,14 @@ public class NovoFuncionario extends javax.swing.JDialog {
         Integer senha;
         senha = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite a Senha"));
         Funcionario f = dao.getBySenha(senha);
+
         if (f == null) {
             JOptionPane.showMessageDialog(null, "Senha Invalida!");
         } else {
             if (f.getAdm() == 2) {
                 JOptionPane.showMessageDialog(null, "Usuario não Autorizado");
             } else {
-                
+
                 ObjFuncionario.setNome(txtNome.getText());
                 ObjFuncionario.setCpf(txtCpf.getText());
                 ObjFuncionario.setEmail(txtEmail.getText());
@@ -300,12 +301,12 @@ public class NovoFuncionario extends javax.swing.JDialog {
                 ObjFuncionario.setSalario(Double.parseDouble(txtSalario.getText()));
                 ObjFuncionario.setVales(0.0);
                 //salvar senha
-                if(ObjFuncionario.getId()== null){
-                int novaSenha = random.nextInt(10000);
-                while(novaSenha < 1000){
-                    novaSenha = novaSenha + 100;
-                }
-                ObjFuncionario.setSenha(novaSenha);
+                if (ObjFuncionario.getId() == null) {
+                    int novaSenha = random.nextInt(10000);
+                    while (novaSenha < 1000) {
+                        novaSenha = novaSenha + 100;
+                    }
+                    ObjFuncionario.setSenha(novaSenha);
                 }
                 //adicionar adm
                 if (cbAdm.isSelected()) {
@@ -313,11 +314,23 @@ public class NovoFuncionario extends javax.swing.JDialog {
                 } else {
                     ObjFuncionario.setAdm(2);
                 }
-                
-                dao.salvar(ObjFuncionario);
-                mostrarTela();
-                limparTela();
-                ObjFuncionario = new Funcionario();
+
+                if (ObjFuncionario.getId() != null) {
+                    dao.excluir(ObjFuncionario);
+                }
+                String cpf = ObjFuncionario.getCpf();
+                f = dao.getBycpf(cpf);
+
+                if (f != null) {
+                    JOptionPane.showMessageDialog(null, "CPF já cadastrado!");
+                } else {
+                    dao.salvar(ObjFuncionario);
+                    mostrarTela();
+                    limparTela();
+                    ObjFuncionario = new Funcionario();
+
+                }
+
             }
         }
 
@@ -375,10 +388,10 @@ public class NovoFuncionario extends javax.swing.JDialog {
         txtCidade.setText(ObjFuncionario.getCidade());
         txtSalario.setText(ObjFuncionario.getSalario() + "");
         txtEstado.setText(ObjFuncionario.getEstado());
-        if(ObjFuncionario.getAdm() == 2){
-            
-        }else{
-        
+        if (ObjFuncionario.getAdm() == 2) {
+
+        } else {
+
         }
 
     }//GEN-LAST:event_btnEditarActionPerformed
@@ -398,7 +411,7 @@ public class NovoFuncionario extends javax.swing.JDialog {
     }//GEN-LAST:event_txtPesquisaKeyReleased
 
     private void txtSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioActionPerformed
-        
+
     }//GEN-LAST:event_txtSalarioActionPerformed
 
     /**

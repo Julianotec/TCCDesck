@@ -5,9 +5,11 @@
  */
 package view;
 
+import dao.FuncionarioDAO;
 import dao.SaldoDAO;
 import dao.extratoDAO;
 import entity.Extrato;
+import entity.Funcionario;
 import entity.Saldo;
 import javax.swing.JOptionPane;
 
@@ -94,6 +96,11 @@ public class MenuPrincipal extends javax.swing.JDialog {
         btnAbriGaveta.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         btnAbriGaveta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Gaveta.png"))); // NOI18N
         btnAbriGaveta.setText("Abrir Gaveta");
+        btnAbriGaveta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbriGavetaActionPerformed(evt);
+            }
+        });
 
         btnSaldo.setBackground(new java.awt.Color(255, 255, 255));
         btnSaldo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
@@ -136,7 +143,7 @@ public class MenuPrincipal extends javax.swing.JDialog {
                     .addComponent(btnAdiantamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNovoFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSacar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(50, 50, 50)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnFecharCaixa, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
                     .addComponent(btnDepositar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -177,7 +184,6 @@ public class MenuPrincipal extends javax.swing.JDialog {
 
     private void btnSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaldoActionPerformed
 
-    
         s = dao.getSaldoById(1);
         double ValorSaldo;
         ValorSaldo = s.getValor();
@@ -225,6 +231,24 @@ public class MenuPrincipal extends javax.swing.JDialog {
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         dispose();
     }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnAbriGavetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbriGavetaActionPerformed
+        Integer senha = Integer.parseInt(JOptionPane.showInputDialog("Favor Digitar a Senha"));
+        Funcionario f = new Funcionario();
+        FuncionarioDAO dao = new FuncionarioDAO();
+        f = dao.getBySenha(senha);
+        if (f == null) {
+            JOptionPane.showMessageDialog(null, "Senha Invalida!");
+        } else {
+            if (f.getAdm() == 2) {
+                JOptionPane.showMessageDialog(null, "Usuario não Autorizado");
+            } else {
+
+            }
+        }
+
+
+    }//GEN-LAST:event_btnAbriGavetaActionPerformed
 
     /**
      * @param args the command line arguments

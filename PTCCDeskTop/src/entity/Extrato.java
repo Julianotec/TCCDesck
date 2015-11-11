@@ -23,7 +23,7 @@ public class Extrato implements Serializable{
     private Double valor;
     private String tipo;
     private String descricao;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date data;
     private String nomeFuncionario;
 
