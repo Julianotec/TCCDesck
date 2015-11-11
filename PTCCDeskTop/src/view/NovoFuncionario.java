@@ -9,6 +9,7 @@ import dao.FuncionarioDAO;
 import entity.Funcionario;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -21,6 +22,7 @@ public class NovoFuncionario extends javax.swing.JDialog {
     FuncionarioDAO dao = new FuncionarioDAO();
     List<Funcionario> listaFuncionarios = new ArrayList<Funcionario>();
     Funcionario ObjFuncionario = new Funcionario();
+    Random random = new Random();
 
     public NovoFuncionario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -278,16 +280,15 @@ public class NovoFuncionario extends javax.swing.JDialog {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Integer senha;
-        Funcionario f = new Funcionario();
         senha = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite a Senha"));
-        f = dao.getBySenha(senha);
+        Funcionario f = dao.getBySenha(senha);
         if (f == null) {
             JOptionPane.showMessageDialog(null, "Senha Invalida!");
         } else {
             if (f.getAdm() == 2) {
                 JOptionPane.showMessageDialog(null, "Usuario não Autorizado");
             } else {
-
+                
                 ObjFuncionario.setNome(txtNome.getText());
                 ObjFuncionario.setCpf(txtCpf.getText());
                 ObjFuncionario.setEmail(txtEmail.getText());
@@ -297,13 +298,22 @@ public class NovoFuncionario extends javax.swing.JDialog {
                 ObjFuncionario.setCidade(txtCidade.getText());
                 ObjFuncionario.setEstado(txtEstado.getText());
                 ObjFuncionario.setSalario(Double.parseDouble(txtSalario.getText()));
-                ObjFuncionario.setSenha(12345);
                 ObjFuncionario.setVales(0.0);
+                //salvar senha
+                if(ObjFuncionario.getId()== null){
+                int novaSenha = random.nextInt(10000);
+                while(novaSenha < 1000){
+                    novaSenha = novaSenha + 100;
+                }
+                ObjFuncionario.setSenha(novaSenha);
+                }
+                //adicionar adm
                 if (cbAdm.isSelected()) {
                     ObjFuncionario.setAdm(1);
                 } else {
                     ObjFuncionario.setAdm(2);
                 }
+                
                 dao.salvar(ObjFuncionario);
                 mostrarTela();
                 limparTela();
@@ -333,6 +343,7 @@ public class NovoFuncionario extends javax.swing.JDialog {
         txtCidade.setText("");
         txtSalario.setText("");
         txtEstado.setText("");
+
     }
 
 
@@ -364,6 +375,11 @@ public class NovoFuncionario extends javax.swing.JDialog {
         txtCidade.setText(ObjFuncionario.getCidade());
         txtSalario.setText(ObjFuncionario.getSalario() + "");
         txtEstado.setText(ObjFuncionario.getEstado());
+        if(ObjFuncionario.getAdm() == 2){
+            
+        }else{
+        
+        }
 
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -382,7 +398,7 @@ public class NovoFuncionario extends javax.swing.JDialog {
     }//GEN-LAST:event_txtPesquisaKeyReleased
 
     private void txtSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtSalarioActionPerformed
 
     /**
