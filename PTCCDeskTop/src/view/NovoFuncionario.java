@@ -23,6 +23,8 @@ public class NovoFuncionario extends javax.swing.JDialog {
     List<Funcionario> listaFuncionarios = new ArrayList<Funcionario>();
     Funcionario ObjFuncionario = new Funcionario();
     Random random = new Random();
+    boolean editarUsuario;
+    String cpfEditar;
 
     public NovoFuncionario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -63,6 +65,9 @@ public class NovoFuncionario extends javax.swing.JDialog {
         txtTelefone = new javax.swing.JFormattedTextField();
         txtCpf = new javax.swing.JFormattedTextField();
         txtCelular = new javax.swing.JFormattedTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -165,6 +170,12 @@ public class NovoFuncionario extends javax.swing.JDialog {
             ex.printStackTrace();
         }
 
+        jLabel7.setText("Nome");
+
+        jLabel12.setText("CPF");
+
+        jLabel13.setText("Vales");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -198,27 +209,39 @@ public class NovoFuncionario extends javax.swing.JDialog {
                     .addComponent(txtTelefone)
                     .addComponent(txtCpf)
                     .addComponent(txtCelular))
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtPesquisa)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(11, 11, 11))
-                            .addComponent(jScrollPane1))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                                    .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(11, 11, 11)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnSair)
-                        .addGap(33, 33, 33))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel7)
+                        .addGap(72, 72, 72)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel13)
+                        .addGap(66, 66, 66))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(7, 7, 7)
                 .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -264,7 +287,7 @@ public class NovoFuncionario extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbAdm)
                             .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11))))
@@ -282,14 +305,14 @@ public class NovoFuncionario extends javax.swing.JDialog {
         Integer senha;
         senha = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite a Senha"));
         Funcionario f = dao.getBySenha(senha);
-
+        editarUsuario = true;
         if (f == null) {
             JOptionPane.showMessageDialog(null, "Senha Invalida!");
         } else {
             if (f.getAdm() == 2) {
                 JOptionPane.showMessageDialog(null, "Usuario não Autorizado");
             } else {
-
+                cpfEditar = ObjFuncionario.getCpf();
                 ObjFuncionario.setNome(txtNome.getText());
                 ObjFuncionario.setCpf(txtCpf.getText());
                 ObjFuncionario.setEmail(txtEmail.getText());
@@ -303,10 +326,17 @@ public class NovoFuncionario extends javax.swing.JDialog {
                 //salvar senha
                 if (ObjFuncionario.getId() == null) {
                     int novaSenha = random.nextInt(10000);
-                    while (novaSenha < 1000) {
+                    while (novaSenha < 1000 && f !=  null ) {
                         novaSenha = novaSenha + 100;
+                        f = dao.getBySenha(novaSenha);
+                        if(novaSenha >= 10000){
+                            novaSenha = 0;
+                        }
                     }
                     ObjFuncionario.setSenha(novaSenha);
+
+                } else {
+                    editarUsuario = false;
                 }
                 //adicionar adm
                 if (cbAdm.isSelected()) {
@@ -315,20 +345,37 @@ public class NovoFuncionario extends javax.swing.JDialog {
                     ObjFuncionario.setAdm(2);
                 }
 
-                if (ObjFuncionario.getId() != null) {
-                    dao.excluir(ObjFuncionario);
-                }
-                String cpf = ObjFuncionario.getCpf();
-                f = dao.getBycpf(cpf);
+                if (editarUsuario) {
+                    String cpf = ObjFuncionario.getCpf();
+                    f = dao.getBycpf(cpf);
+                    if (f != null) {
+                        JOptionPane.showMessageDialog(null, "CPF já cadastrado!");
+                    } else {
+                        dao.salvar(ObjFuncionario);
+                        mostrarTela();
+                        limparTela();
+                        ObjFuncionario = new Funcionario();
 
-                if (f != null) {
-                    JOptionPane.showMessageDialog(null, "CPF já cadastrado!");
+                    }
                 } else {
-                    dao.salvar(ObjFuncionario);
-                    mostrarTela();
-                    limparTela();
-                    ObjFuncionario = new Funcionario();
+                    if (cpfEditar.equals(ObjFuncionario.getCpf())) {
+                        dao.salvar(ObjFuncionario);
+                        mostrarTela();
+                        limparTela();
+                        ObjFuncionario = new Funcionario();
+                    } else {
+                        String cpf = ObjFuncionario.getCpf();
+                        f = dao.getBycpf(cpf);
+                        if (f != null) {
+                            JOptionPane.showMessageDialog(null, "CPF já cadastrado!");
+                        } else {
+                            dao.salvar(ObjFuncionario);
+                            mostrarTela();
+                            limparTela();
+                            ObjFuncionario = new Funcionario();
 
+                        }
+                    }
                 }
 
             }
@@ -465,11 +512,14 @@ public class NovoFuncionario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;

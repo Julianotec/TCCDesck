@@ -66,6 +66,7 @@ public class Adiantamento extends javax.swing.JDialog {
         lblFuncionario = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblSalario = new javax.swing.JLabel();
+        btnGerarRelatorio = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -136,7 +137,7 @@ public class Adiantamento extends javax.swing.JDialog {
 
         jLabel6.setText("Valor Em Debito: R$");
 
-        lblSaldo.setText("------");
+        lblSaldo.setText("-----");
 
         lblValorDevido.setText("-----");
 
@@ -204,22 +205,31 @@ public class Adiantamento extends javax.swing.JDialog {
                 .addGap(0, 53, Short.MAX_VALUE))
         );
 
+        btnGerarRelatorio.setBackground(new java.awt.Color(255, 255, 255));
+        btnGerarRelatorio.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        btnGerarRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Relatorio.png"))); // NOI18N
+        btnGerarRelatorio.setText("Gerar Relatorio de Vales");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addComponent(btnSelecionar)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 191, Short.MAX_VALUE)
-                        .addComponent(btnSair))
-                    .addComponent(txtPesquisa)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
+                        .addComponent(btnSelecionar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnGerarRelatorio)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSair)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -234,7 +244,9 @@ public class Adiantamento extends javax.swing.JDialog {
                         .addGap(16, 16, 16)
                         .addComponent(btnSelecionar)))
                 .addGap(18, 28, Short.MAX_VALUE)
-                .addComponent(btnSair)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSair)
+                    .addComponent(btnGerarRelatorio))
                 .addGap(10, 10, 10))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -370,6 +382,7 @@ public class Adiantamento extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGerarRelatorio;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnSelecionar;

@@ -122,7 +122,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/image/NovoFuncionario.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Adicionar Funcionario"/>
+        <Property name="text" type="java.lang.String" value="Funcionarios"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNovoFuncionarioActionPerformed"/>

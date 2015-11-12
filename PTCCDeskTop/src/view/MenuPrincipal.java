@@ -75,7 +75,7 @@ public class MenuPrincipal extends javax.swing.JDialog {
         btnNovoFuncionario.setBackground(new java.awt.Color(255, 255, 255));
         btnNovoFuncionario.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         btnNovoFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/NovoFuncionario.png"))); // NOI18N
-        btnNovoFuncionario.setText("Adicionar Funcionario");
+        btnNovoFuncionario.setText("Funcionarios");
         btnNovoFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoFuncionarioActionPerformed(evt);

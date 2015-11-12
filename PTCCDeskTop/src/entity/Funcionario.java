@@ -36,7 +36,7 @@ public class Funcionario implements Serializable{
 
     @Override
     public String toString() {
-    return nome;
+    return nome +"            "+cpf+"                 "+ vales;
     }
 
     
