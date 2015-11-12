@@ -209,6 +209,11 @@ public class Adiantamento extends javax.swing.JDialog {
         btnGerarRelatorio.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         btnGerarRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Relatorio.png"))); // NOI18N
         btnGerarRelatorio.setText("Gerar Relatorio de Vales");
+        btnGerarRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGerarRelatorioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -326,6 +331,10 @@ public class Adiantamento extends javax.swing.JDialog {
         }
         lstFuncionario.setModel(modelo);
     }//GEN-LAST:event_txtPesquisaKeyReleased
+
+    private void btnGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarRelatorioActionPerformed
+    
+    }//GEN-LAST:event_btnGerarRelatorioActionPerformed
     private void mostrarTela() {
         Saldo s = new Saldo();
         s = daoS.getSaldoById(1);
