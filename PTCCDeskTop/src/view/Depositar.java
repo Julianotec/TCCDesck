@@ -55,6 +55,7 @@ public class Depositar extends javax.swing.JDialog {
         btnDepositar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Depositar");
 
         btnSair.setBackground(new java.awt.Color(255, 255, 255));
         btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N

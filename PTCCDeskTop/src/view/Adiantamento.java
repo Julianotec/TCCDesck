@@ -82,6 +82,7 @@ public class Adiantamento extends javax.swing.JDialog {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Adiantamento");
 
         txtPesquisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,40 +274,44 @@ public class Adiantamento extends javax.swing.JDialog {
         f = dao.getBySenha(senha);
         if (ObjFuncionario == null) {
             JOptionPane.showMessageDialog(null, "Senha Invalida!");
-        } else {         
-            if(f.getAdm() == 2){
-            JOptionPane.showMessageDialog(null, "Usuario não Autorizado");
-            }else{
-            //realizar adiantamento
-            Saldo s = new Saldo();
-            s = daoS.getSaldoById(1);
-            double valor = Double.parseDouble(txtValor.getText());
-            lblSalario.setText(ObjFuncionario.getSalario() + "");
-            double vales =  ObjFuncionario.getVales();
-            double Saldo = s.getValor();
-            Saldo = Saldo - valor;
-            vales = vales + valor;
-            s.setValor(Saldo);
-            daoS.salvar(s);
-            ObjFuncionario.setVales(vales);
-            dao.salvar(ObjFuncionario);
-            mostrarTela();
-            lblValorDevido.setText(ObjFuncionario.getVales() + "");
+        } else {
+            if (f.getAdm() == 2) {
+                JOptionPane.showMessageDialog(null, "Usuario não Autorizado");
+            } else {
+                //realizar adiantamento
+                Saldo s = new Saldo();
+                s = daoS.getSaldoById(1);
+                double valor = Double.parseDouble(txtValor.getText());
+                lblSalario.setText(ObjFuncionario.getSalario() + "");
+                double vales = ObjFuncionario.getVales();
+                double Saldo = s.getValor();
+                if (vales + valor <= ObjFuncionario.getSalario()) {
+                    Saldo = Saldo - valor;
+                    vales = vales + valor;
+                    s.setValor(Saldo);
+                    daoS.salvar(s);
+                    ObjFuncionario.setVales(vales);
+                    dao.salvar(ObjFuncionario);
+                    mostrarTela();
+                    lblValorDevido.setText(ObjFuncionario.getVales() + "");
 
-            //salvar extrato
-            e.setNomeFuncionario(f.getNome());
-            e.setDescricao("Vale para funcionario "+ObjFuncionario.getNome());
-            e.setTipo("Adiantamento");
-            e.setValor(valor);
-            e.setData(new Date());
-            daoExtrato.salvar(e);
-            f = null;
-            
-            //limpar tela
-            txtValor.setText("");
-            JOptionPane.showMessageDialog(null, "Adiantamento efetuado com sucesso!");
+                    //salvar extrato
+                    e.setNomeFuncionario(f.getNome());
+                    e.setDescricao("Vale para funcionario " + ObjFuncionario.getNome());
+                    e.setTipo("Adiantamento");
+                    e.setValor(valor);
+                    e.setData(new Date());
+                    daoExtrato.salvar(e);
+                    f = null;
+
+                    //limpar tela
+                    txtValor.setText("");
+                    JOptionPane.showMessageDialog(null, "Adiantamento efetuado com sucesso!");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Valor não autorizado!");
+                }
             }
-            }
+        }
 
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -333,7 +338,7 @@ public class Adiantamento extends javax.swing.JDialog {
     }//GEN-LAST:event_txtPesquisaKeyReleased
 
     private void btnGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarRelatorioActionPerformed
-    
+
     }//GEN-LAST:event_btnGerarRelatorioActionPerformed
     private void mostrarTela() {
         Saldo s = new Saldo();

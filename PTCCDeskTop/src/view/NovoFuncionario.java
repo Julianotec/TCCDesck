@@ -70,6 +70,7 @@ public class NovoFuncionario extends javax.swing.JDialog {
         jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("NovoFuncionario");
 
         jLabel1.setText("Nome");
 
@@ -312,6 +313,7 @@ public class NovoFuncionario extends javax.swing.JDialog {
             if (f.getAdm() == 2) {
                 JOptionPane.showMessageDialog(null, "Usuario não Autorizado");
             } else {
+       
                 cpfEditar = ObjFuncionario.getCpf();
                 ObjFuncionario.setNome(txtNome.getText());
                 ObjFuncionario.setCpf(txtCpf.getText());
@@ -322,7 +324,9 @@ public class NovoFuncionario extends javax.swing.JDialog {
                 ObjFuncionario.setCidade(txtCidade.getText());
                 ObjFuncionario.setEstado(txtEstado.getText());
                 ObjFuncionario.setSalario(Double.parseDouble(txtSalario.getText()));
+                if(ObjFuncionario.getVales() == null){
                 ObjFuncionario.setVales(0.0);
+                }
                 //salvar senha
                 if (ObjFuncionario.getId() == null) {
                     int novaSenha = random.nextInt(10000);

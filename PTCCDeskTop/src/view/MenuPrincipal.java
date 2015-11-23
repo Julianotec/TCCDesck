@@ -49,6 +49,7 @@ public class MenuPrincipal extends javax.swing.JDialog {
         btnSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("MenuPrincipal");
         setBackground(new java.awt.Color(0, 0, 0));
 
         btnSacar1.setBackground(new java.awt.Color(255, 255, 255));

@@ -61,6 +61,7 @@ public class FecharCaixa extends javax.swing.JDialog {
         btnSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("FecharCaixa");
 
         jLabel1.setText("Saldo: R$");
 
@@ -75,7 +76,7 @@ public class FecharCaixa extends javax.swing.JDialog {
         btnGerar.setBackground(new java.awt.Color(255, 255, 255));
         btnGerar.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         btnGerar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Confirmar.png"))); // NOI18N
-        btnGerar.setText("Gerar Relatorio");
+        btnGerar.setText("Fechar e Gerar Relatorio");
         btnGerar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGerarActionPerformed(evt);

@@ -55,6 +55,7 @@ public class Sacar extends javax.swing.JDialog {
         txtDescricao = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Sacar");
 
         jLabel1.setText("Saldo: R$");
 
