@@ -98,11 +98,6 @@ public class Adiantamento extends javax.swing.JDialog {
             }
         });
 
-        lstFuncionario.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(lstFuncionario);
 
         btnSelecionar.setBackground(new java.awt.Color(255, 255, 255));

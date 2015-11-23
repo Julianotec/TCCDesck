@@ -313,7 +313,7 @@ public class NovoFuncionario extends javax.swing.JDialog {
             if (f.getAdm() == 2) {
                 JOptionPane.showMessageDialog(null, "Usuario não Autorizado");
             } else {
-       
+
                 cpfEditar = ObjFuncionario.getCpf();
                 ObjFuncionario.setNome(txtNome.getText());
                 ObjFuncionario.setCpf(txtCpf.getText());
@@ -324,16 +324,16 @@ public class NovoFuncionario extends javax.swing.JDialog {
                 ObjFuncionario.setCidade(txtCidade.getText());
                 ObjFuncionario.setEstado(txtEstado.getText());
                 ObjFuncionario.setSalario(Double.parseDouble(txtSalario.getText()));
-                if(ObjFuncionario.getVales() == null){
-                ObjFuncionario.setVales(0.0);
+                if (ObjFuncionario.getVales() == null) {
+                    ObjFuncionario.setVales(0.0);
                 }
                 //salvar senha
                 if (ObjFuncionario.getId() == null) {
                     int novaSenha = random.nextInt(10000);
-                    while (novaSenha < 1000 && f !=  null ) {
+                    while (novaSenha < 1000 && f != null) {
                         novaSenha = novaSenha + 100;
                         f = dao.getBySenha(novaSenha);
-                        if(novaSenha >= 10000){
+                        if (novaSenha >= 10000) {
                             novaSenha = 0;
                         }
                     }
@@ -348,7 +348,7 @@ public class NovoFuncionario extends javax.swing.JDialog {
                 } else {
                     ObjFuncionario.setAdm(2);
                 }
-
+                //verificar CPF
                 if (editarUsuario) {
                     String cpf = ObjFuncionario.getCpf();
                     f = dao.getBycpf(cpf);
@@ -413,14 +413,24 @@ public class NovoFuncionario extends javax.swing.JDialog {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
 
-        int confirmacao = JOptionPane.showConfirmDialog(this, "Deseja Excluir?");
-        if (confirmacao == 0) {
-            ObjFuncionario = (Funcionario) lstFuncionario.getSelectedValue();
-            dao.excluir(ObjFuncionario);
-            mostrarTela();
-            ObjFuncionario = new Funcionario();
+        Integer senha;
+        senha = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite a Senha"));
+        Funcionario f = dao.getBySenha(senha);
+        if (f == null) {
+            JOptionPane.showMessageDialog(null, "Senha Invalida!");
+        } else {
+            if (f.getAdm() == 2) {
+                JOptionPane.showMessageDialog(null, "Usuario não Autorizado");
+            } else {
+                int confirmacao = JOptionPane.showConfirmDialog(this, "Deseja Excluir?");
+                if (confirmacao == 0) {
+                    ObjFuncionario = (Funcionario) lstFuncionario.getSelectedValue();
+                    dao.excluir(ObjFuncionario);
+                    mostrarTela();
+                    ObjFuncionario = new Funcionario();
+                }
+            }
         }
-
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
