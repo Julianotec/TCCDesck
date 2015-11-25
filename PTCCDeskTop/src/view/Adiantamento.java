@@ -7,7 +7,7 @@ package view;
 
 import dao.FuncionarioDAO;
 import dao.SaldoDAO;
-import dao.extratoDAO;
+import dao.ExtratoDAO;
 import entity.Extrato;
 import entity.Funcionario;
 import entity.Saldo;
@@ -29,7 +29,7 @@ public class Adiantamento extends javax.swing.JDialog {
     List<Funcionario> listaFuncionarios = new ArrayList<Funcionario>();
     Funcionario ObjFuncionario = new Funcionario();
     Extrato e = new Extrato();
-    extratoDAO daoExtrato = new extratoDAO();
+    ExtratoDAO daoExtrato = new ExtratoDAO();
 
     public Adiantamento(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

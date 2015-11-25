@@ -8,7 +8,7 @@ package view;
 import dao.FuncionarioDAO;
 import dao.SaldoDAO;
 import dao.caixaDAO;
-import dao.extratoDAO;
+import dao.ExtratoDAO;
 import entity.Caixa;
 import entity.Extrato;
 import entity.Funcionario;
@@ -17,6 +17,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -179,7 +180,7 @@ public class FecharCaixa extends javax.swing.JDialog {
             c.setSaldoReal(valorEmCaixa);
             c.setDescricao(txtDecrição.getText());
       //    DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
-      //    Date date = (Date) formatter.parse(txt);
+            //    Date date = (Date) formatter.parse(txt);
             c.setData(new Date());
             c.setQuebraDeCaixa(valorEmCaixa - saldo);
             s.setValor(valorReal);
@@ -188,8 +189,13 @@ public class FecharCaixa extends javax.swing.JDialog {
             MostraTela();
             JOptionPane.showMessageDialog(null, "Relatorio Gerado");
         }
-
+        Date hoje = new Date();
+        ExtratoDAO dao = new ExtratoDAO();
+        List<Extrato> lista = dao.getAllByData(hoje);
+        
     }//GEN-LAST:event_btnGerarActionPerformed
+
+    
 
     public void MostraTela() {
         s = daoSaldo.getSaldoById(1);

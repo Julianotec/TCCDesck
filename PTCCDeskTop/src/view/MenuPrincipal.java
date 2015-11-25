@@ -7,7 +7,7 @@ package view;
 
 import dao.FuncionarioDAO;
 import dao.SaldoDAO;
-import dao.extratoDAO;
+import dao.ExtratoDAO;
 import entity.Extrato;
 import entity.Funcionario;
 import entity.Saldo;
@@ -196,7 +196,7 @@ public class MenuPrincipal extends javax.swing.JDialog {
     private void btnFecharCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCaixaActionPerformed
         FecharCaixa nomeVariavel = new FecharCaixa(null, rootPaneCheckingEnabled);
         nomeVariavel.setVisible(true);
-        extratoDAO dao = new extratoDAO();
+        ExtratoDAO dao = new ExtratoDAO();
         Extrato extrato = new Extrato();
         extrato = dao.getById(1);
         String nome = extrato.getNomeFuncionario();
